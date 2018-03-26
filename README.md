@@ -2,7 +2,7 @@
 This is an Event management website which is designed using django and mysql as data storage.Also made use of FullCalender api to show events plotted on calenders.
 # functionalities
 #Committies
- Add events
+ Add events <br>
  edit,delete,reschedule events
 # Admin
  Event approval
