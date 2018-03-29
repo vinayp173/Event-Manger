@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2018 at 06:01 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Mar 29, 2018 at 10:24 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -149,7 +147,7 @@ CREATE TABLE `committee` (
 INSERT INTO `committee` (`cmid`, `username`, `pwd`, `cname`) VALUES
 (1, 'adm', 'pass', 'vinay'),
 (2, '15CE5003C', 'pass', 'CSI '),
-(3, '12345', 'pass', 'TPC');
+(3, '12345', 'pass123', 'TPC');
 
 -- --------------------------------------------------------
 
@@ -275,6 +273,7 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('kpx6cmqjbjvmctsnbjiox5gv21ba6m86', 'YzI0NjU3OTk2NTA1NjdhZjExNmNlYmRiN2NmMjJmNTFmMTIwNjhkNTp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjozfQ==', '2018-04-08 06:11:03.283343'),
 ('qsje1se390rvriz2a3ljtc9rt8tjxh87', 'Y2ZiZTYwYjQwMjdkOGI0OWU4M2E4MTVmOWJmNTFmN2I3YTdhMWY5NDp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjoyfQ==', '2018-04-08 06:15:21.890755'),
 ('r7i5lzez7e66n4kysng4513joginumfz', 'ZmNmYTU4MDBjNmRmMzUyNTk4NzhlODliNmQ0Nzc3OGVkZmFkODc4YTp7ImNtaWRfZmsiOjEsInJvbGxubyI6IjE0Y2UxMDE3IiwieWVhciI6Ii0ifQ==', '2018-04-08 05:45:08.074291'),
+('wo5ddc15b4cki4l8xryc3sh8tqlg6y3d', 'NjMxOTI0NmRmZTM3MDZmODVlMTI3NDNlZTZiYzY5MGI0Njk4NDU5Yzp7InJvbGxubyI6LTEsInllYXIiOiIiLCJ1bmFtZSI6IjE1Q0U1MDAzQyIsImNtaWRfZmsiOjJ9', '2018-04-12 07:33:36.702096'),
 ('wtsf1sqqnorb264nklvorwcvuaj26a3h', 'M2QxNjc0YjIyZTljMDMwM2RiYmYxZmZiNmNkOGEzZjc1ZWFlZmI4NTp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjoxfQ==', '2018-04-08 06:10:09.932359'),
 ('wvgas79fh83qztziz3lyfygmqmt8vpjx', 'YzI0NjU3OTk2NTA1NjdhZjExNmNlYmRiN2NmMjJmNTFmMTIwNjhkNTp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjozfQ==', '2018-04-08 06:14:51.856771'),
 ('zwe6gyfpoknkkxq88yke6jwwiz29x935', 'NTYwZmYwYzQ3YmViYzNjZDdiYmViYTg5Mzk0Mzk0MmQzYzg5YjVkOTp7ImNtaWRfZmsiOjF9', '2018-04-08 06:14:27.607434');
@@ -308,8 +307,8 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`eid`, `cmid_fk`, `ename`, `description`, `date`, `from_hr`, `to_hr`, `room_id`, `branch`, `target_aud`, `amount`, `approve_status`, `author`, `event_timestamp`) VALUES
 (2, 2, 'Unscript2k18', 'desc', '2018-03-30', 10, 24, 511, 'CS', 'BE', 0, 1, 'sirjar raval', '2018-03-25 05:06:44'),
-(8, 2, 'google IO', 'Google I/O is an annual developer confer', '2018-03-28', 10, 24, 651, 'CS', 'BE', 0, 1, 'siraj raval', '2018-03-25 05:06:39'),
-(9, 2, 'code jam', 'Google Code Jam is an international prog', '2018-04-15', 10, 24, 615, 'CS', 'BE', 100, 0, 'siraj raval', '2018-03-25 03:59:36'),
+(8, 2, 'google IO', 'Google I/O is an annual developer confer', '2018-04-28', 10, 24, 651, 'Computer', 'BE', 0, 0, 'siraj raval', '2018-03-28 17:42:25'),
+(9, 2, 'code jam', 'Google Code Jam is an international prog', '2018-04-15', 10, 24, 615, 'CS', 'BE', 100, 1, 'siraj raval', '2018-03-28 17:36:49'),
 (10, 2, 'bitcamp', 'Bitcamp is a place for exploration. You ', '2018-04-15', 0, 24, 515, 'CS', 'BE', 500, 1, 'sachin jadhav', '2018-03-25 04:38:39'),
 (11, 2, 'algo5', 'coding c', '2018-03-30', 10, 21, 416, 'CS', 'BE', 0, 0, 'cdhbjcss', '2018-03-25 05:02:52');
 
@@ -392,7 +391,9 @@ INSERT INTO `notice` (`nid`, `title`, `description`, `date`, `time`) VALUES
 (11, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
 (12, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
 (13, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
-(14, 'ingram', 'The mail has been sent to all the eligible students.Kindly check the mail', '', '');
+(14, 'ingram', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(15, 'ingram', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(16, 'Mahavir Jayanti', 'Holiday on occasion of mahavir Jayanti                  ', '2018-03-28', '10:10');
 
 -- --------------------------------------------------------
 
@@ -655,109 +656,91 @@ ALTER TABLE `student_document`
 --
 ALTER TABLE `auth_group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
 --
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `committee`
 --
 ALTER TABLE `committee`
   MODIFY `cmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
   MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `event_student`
 --
 ALTER TABLE `event_student`
   MODIFY `esid` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `formregister`
 --
 ALTER TABLE `formregister`
   MODIFY `fno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
+  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `offer_letter`
 --
 ALTER TABLE `offer_letter`
   MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `student_academic`
 --
 ALTER TABLE `student_academic`
   MODIFY `ano` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `student_document`
 --
 ALTER TABLE `student_document`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- Constraints for dumped tables
 --
@@ -814,7 +797,6 @@ ALTER TABLE `event_student`
 --
 ALTER TABLE `offer_letter`
   ADD CONSTRAINT `offer_letter_ibfk_1` FOREIGN KEY (`roll_no_fk`) REFERENCES `student` (`rollno`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
