@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2018 at 03:46 PM
+-- Generation Time: Mar 28, 2018 at 06:01 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -80,7 +80,10 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (15, 'Can delete content type', 5, 'delete_contenttype'),
 (16, 'Can add session', 6, 'add_session'),
 (17, 'Can change session', 6, 'change_session'),
-(18, 'Can delete session', 6, 'delete_session');
+(18, 'Can delete session', 6, 'delete_session'),
+(19, 'Can add document', 7, 'add_document'),
+(20, 'Can change document', 7, 'change_document'),
+(21, 'Can delete document', 7, 'delete_document');
 
 -- --------------------------------------------------------
 
@@ -144,7 +147,9 @@ CREATE TABLE `committee` (
 --
 
 INSERT INTO `committee` (`cmid`, `username`, `pwd`, `cname`) VALUES
-(1, 'CSI', 'pass', 'vinay');
+(1, 'adm', 'pass', 'vinay'),
+(2, '15CE5003C', 'pass', 'CSI '),
+(3, '12345', 'pass', 'TPC');
 
 -- --------------------------------------------------------
 
@@ -161,6 +166,14 @@ CREATE TABLE `company` (
   `live_kt` int(5) NOT NULL DEFAULT '0',
   `dead_kt` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`cid`, `coname`, `ssc`, `hsc`, `avg_ptr`, `live_kt`, `dead_kt`) VALUES
+(1, 'JPMC', 85, 84, 7, 0, 0),
+(2, 'ingram', 60, 60, 6, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -201,7 +214,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (2, 'auth', 'permission'),
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
-(6, 'sessions', 'session');
+(6, 'sessions', 'session'),
+(7, 'Student', 'document');
 
 -- --------------------------------------------------------
 
@@ -234,7 +248,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (11, 'auth', '0007_alter_validators_add_error_messages', '2018-03-24 10:28:55.822117'),
 (12, 'auth', '0008_alter_user_username_max_length', '2018-03-24 10:28:57.881757'),
 (13, 'auth', '0009_alter_user_last_name_max_length', '2018-03-24 10:28:59.086933'),
-(14, 'sessions', '0001_initial', '2018-03-24 10:28:59.914759');
+(14, 'sessions', '0001_initial', '2018-03-24 10:28:59.914759'),
+(15, 'Student', '0001_initial', '2018-03-24 23:33:31.696778');
 
 -- --------------------------------------------------------
 
@@ -253,7 +268,16 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('wtsf1sqqnorb264nklvorwcvuaj26a3h', 'YWZkZWEyNDMwYTZlNzFlMTM2ZWY4MDUzMGMyZWQ3M2IxNTI3YzFmNTp7InJvbGxubyI6LTEsInllYXIiOiIifQ==', '2018-04-07 14:40:55.927519');
+('5uvkzdz5id6t5f39hqstwehvlh8ekpk7', 'Y2FjZDA1MGUxMDRiYTFmZTA3OTlkMTJhNTFjODQxNzA0ZmFhYmM3MDp7ImNtaWRfZmsiOjMsInJvbGxubyI6LTEsInllYXIiOiIifQ==', '2018-04-08 05:52:45.147796'),
+('70jcbjso4jh2gixc6bv47x6wanw43scr', 'ZjdkNzE4ZGUxYzFjYmE5ZmRhN2Q1NjI2Y2RiZjMzMTA1N2ZmNWQ4MDp7ImNtaWRfZmsiOjIsInJvbGxubyI6IjE1Q0U1MDAzIiwieWVhciI6IkJFLUNTIn0=', '2018-04-08 06:12:00.050797'),
+('9ld48k67024mq4frs65iv888zwfjeywx', 'YzI0NjU3OTk2NTA1NjdhZjExNmNlYmRiN2NmMjJmNTFmMTIwNjhkNTp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjozfQ==', '2018-04-08 06:11:30.236638'),
+('k0dyeve937k9th7qt3n3x2t0uqkjbp3y', 'Y2I1ODgxZTY2YWFjY2Y1YmNiYzg0ODMwOGIwZmIzYzAwNGMwOTMxMzp7InJvbGxubyI6IjE1Q0U1MDAzIiwieWVhciI6IkJFLUNTIn0=', '2018-04-08 06:15:03.417322'),
+('kpx6cmqjbjvmctsnbjiox5gv21ba6m86', 'YzI0NjU3OTk2NTA1NjdhZjExNmNlYmRiN2NmMjJmNTFmMTIwNjhkNTp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjozfQ==', '2018-04-08 06:11:03.283343'),
+('qsje1se390rvriz2a3ljtc9rt8tjxh87', 'Y2ZiZTYwYjQwMjdkOGI0OWU4M2E4MTVmOWJmNTFmN2I3YTdhMWY5NDp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjoyfQ==', '2018-04-08 06:15:21.890755'),
+('r7i5lzez7e66n4kysng4513joginumfz', 'ZmNmYTU4MDBjNmRmMzUyNTk4NzhlODliNmQ0Nzc3OGVkZmFkODc4YTp7ImNtaWRfZmsiOjEsInJvbGxubyI6IjE0Y2UxMDE3IiwieWVhciI6Ii0ifQ==', '2018-04-08 05:45:08.074291'),
+('wtsf1sqqnorb264nklvorwcvuaj26a3h', 'M2QxNjc0YjIyZTljMDMwM2RiYmYxZmZiNmNkOGEzZjc1ZWFlZmI4NTp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjoxfQ==', '2018-04-08 06:10:09.932359'),
+('wvgas79fh83qztziz3lyfygmqmt8vpjx', 'YzI0NjU3OTk2NTA1NjdhZjExNmNlYmRiN2NmMjJmNTFmMTIwNjhkNTp7InJvbGxubyI6LTEsInllYXIiOiIiLCJjbWlkX2ZrIjozfQ==', '2018-04-08 06:14:51.856771'),
+('zwe6gyfpoknkkxq88yke6jwwiz29x935', 'NTYwZmYwYzQ3YmViYzNjZDdiYmViYTg5Mzk0Mzk0MmQzYzg5YjVkOTp7ImNtaWRfZmsiOjF9', '2018-04-08 06:14:27.607434');
 
 -- --------------------------------------------------------
 
@@ -283,9 +307,11 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`eid`, `cmid_fk`, `ename`, `description`, `date`, `from_hr`, `to_hr`, `room_id`, `branch`, `target_aud`, `amount`, `approve_status`, `author`, `event_timestamp`) VALUES
-(1, 1, 'unscript', 'coding competiton', '2018-03-24', 10, 24, 516, 'CM', 'BE', 0, 1, '', '2018-03-24 14:27:07'),
-(2, 1, 'algo4', 'coding competiton', '2018-03-24', 10, 24, 516, 'CM', 'BE', 0, 0, '', '2018-03-24 13:16:44'),
-(3, 1, 'bitcamp', 'coding competiton', '2018-03-24', 10, 24, 516, 'CM', 'BE', 0, 0, '', '2018-03-24 13:16:45');
+(2, 2, 'Unscript2k18', 'desc', '2018-03-30', 10, 24, 511, 'CS', 'BE', 0, 1, 'sirjar raval', '2018-03-25 05:06:44'),
+(8, 2, 'google IO', 'Google I/O is an annual developer confer', '2018-03-28', 10, 24, 651, 'CS', 'BE', 0, 1, 'siraj raval', '2018-03-25 05:06:39'),
+(9, 2, 'code jam', 'Google Code Jam is an international prog', '2018-04-15', 10, 24, 615, 'CS', 'BE', 100, 0, 'siraj raval', '2018-03-25 03:59:36'),
+(10, 2, 'bitcamp', 'Bitcamp is a place for exploration. You ', '2018-04-15', 0, 24, 515, 'CS', 'BE', 500, 1, 'sachin jadhav', '2018-03-25 04:38:39'),
+(11, 2, 'algo5', 'coding c', '2018-03-30', 10, 21, 416, 'CS', 'BE', 0, 0, 'cdhbjcss', '2018-03-25 05:02:52');
 
 -- --------------------------------------------------------
 
@@ -305,16 +331,68 @@ CREATE TABLE `event_student` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `formregister`
+--
+
+CREATE TABLE `formregister` (
+  `fno` int(11) NOT NULL,
+  `eid` int(11) NOT NULL,
+  `ename` varchar(30) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `contact` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `formregister`
+--
+
+INSERT INTO `formregister` (`fno`, `eid`, `ename`, `name`, `email`, `contact`) VALUES
+(1, 7, 'google IO', 'vinay', 'vinayp173@gmail.com', '0'),
+(2, 7, 'google IO', '', '', ''),
+(3, 8, 'google IO', 'Sachin', 'sbj276@gmail.com', '76664062'),
+(4, 9, 'code jam', '', '', ''),
+(5, 8, 'google IO', 'vinay', 'vinayp173@gmail.com', '0'),
+(6, 8, 'google IO', '', '', ''),
+(7, 2, 'Unscript2k18', 'Kiran Kumbhar', 'kiranpk189@gmail.com', '2147483647'),
+(8, 2, 'Unscript2k18', '', '', ''),
+(9, 2, 'Unscript2k18', 'Pawan Lokapur', 'pawangl555@gmail.com', '2147483647'),
+(10, 10, 'bitcamp', '', '', ''),
+(11, 11, 'algo5', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notice`
 --
 
 CREATE TABLE `notice` (
   `nid` int(11) NOT NULL,
-  `title` varchar(20) NOT NULL,
+  `title` varchar(50) NOT NULL,
   `description` varchar(600) NOT NULL,
   `date` varchar(15) NOT NULL,
   `time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notice`
+--
+
+INSERT INTO `notice` (`nid`, `title`, `description`, `date`, `time`) VALUES
+(1, 'hackathon', 'come to 513 guys                  ', '23-02-2018', '10am - 12 am'),
+(2, 'hackathon', 'come to 513 guys                  ', '23-02-2018', '10am - 12 am'),
+(3, 'hackathon', 'unscript                  ', '24-03-2018', '10am - 12 am'),
+(4, 'Google IO', 'Google I/O is an annual developer conference held by Google in San Francisco, California. I/O showcases technical in-depth sessions focused on building web, mobile, and enterprise applications with           ', '2018-03-30', '10am - 12 am'),
+(5, 'submission of scholarship', 'please, submit your schloarship forms ealiest.                  ', '2018-04-18', '10am - 12 am'),
+(6, 'ingram', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(7, 'ingram', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(8, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(9, 'ingram', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(10, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(11, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(12, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(13, 'JPMC', 'The mail has been sent to all the eligible students.Kindly check the mail', '', ''),
+(14, 'ingram', 'The mail has been sent to all the eligible students.Kindly check the mail', '', '');
 
 -- --------------------------------------------------------
 
@@ -324,11 +402,22 @@ CREATE TABLE `notice` (
 
 CREATE TABLE `offer_letter` (
   `oid` int(11) NOT NULL,
-  `roll_no_fk` varchar(11) NOT NULL,
-  `company` varchar(30) NOT NULL,
-  `date` varchar(15) NOT NULL,
-  `doc_name` varchar(30) NOT NULL
+  `roll_no_fk` varchar(11) DEFAULT NULL,
+  `company` varchar(30) DEFAULT NULL,
+  `date` varchar(15) DEFAULT NULL,
+  `doc_name` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `offer_letter`
+--
+
+INSERT INTO `offer_letter` (`oid`, `roll_no_fk`, `company`, `date`, `doc_name`) VALUES
+(4, '15CE5003', 'booting', '2018-03-25', 'BOOTEX.LOG'),
+(5, '15CE5008', NULL, NULL, NULL),
+(6, '14CE1068', NULL, NULL, NULL),
+(7, '14CE1068', 'Fscocitey', '2018-03-25', '65.0.3325.181.manifest'),
+(8, '14ce1017', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -353,8 +442,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`rollno`, `name`, `year`, `branch`, `address`, `email`, `pwd`, `contact`, `dob`) VALUES
-('15CE5003', '', '', '', '', 'vinayp173@gmail.com', 'pass', 0, ''),
-('15CE5004', '', '', '', '', 'kiran@gmail.com', 'pass', 0, '');
+('14ce1017', 'Pawan Lokapur', 'BE', 'CS', 'dombivli', 'pawangl555@gmail.com', 'pawan', 2147483647, '14/09/96'),
+('14CE1068', 'Kiran Kumbhar', 'BE', 'CS', 'Shree, Narayan Paradise, Kalyan', 'kiranpk189@gmail.com', 'pass', 2147483647, '1996-09-18'),
+('15CE5003', 'vinay', 'BE', 'CS', '403hjbdh', 'vinayp173@gmail.com', 'pass', 0, '15151ds'),
+('15CE5008', 'Sachin', 'BE', 'CS', '403,Khadakpada, Kalyan(West)', 'sbj276@gmail.com', 'pass', 76664062, '2018-06-27');
 
 -- --------------------------------------------------------
 
@@ -365,22 +456,53 @@ INSERT INTO `student` (`rollno`, `name`, `year`, `branch`, `address`, `email`, `
 CREATE TABLE `student_academic` (
   `ano` int(11) NOT NULL,
   `roll_no_fk` varchar(11) NOT NULL,
-  `ssc` double NOT NULL,
-  `hsc` double NOT NULL,
-  `s1` double NOT NULL,
-  `s2` double NOT NULL,
-  `s3` double NOT NULL,
-  `s4` double NOT NULL,
-  `s5` double NOT NULL,
-  `s6` double NOT NULL,
-  `s7` double NOT NULL,
-  `s8` double NOT NULL,
-  `objective` varchar(80) NOT NULL,
-  `extra` varchar(200) NOT NULL,
-  `achievement` varchar(60) NOT NULL,
+  `ssc` double DEFAULT NULL,
+  `hsc` double DEFAULT NULL,
+  `s1` double DEFAULT NULL,
+  `s2` double DEFAULT NULL,
+  `s3` double DEFAULT NULL,
+  `s4` double DEFAULT NULL,
+  `s5` double DEFAULT NULL,
+  `s6` double DEFAULT NULL,
+  `s7` double DEFAULT NULL,
+  `s8` double DEFAULT NULL,
+  `objective` varchar(80) DEFAULT NULL,
+  `extra` varchar(200) DEFAULT NULL,
+  `achievement` varchar(60) DEFAULT NULL,
   `live_kt` int(5) NOT NULL DEFAULT '0',
   `dead_kt` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_academic`
+--
+
+INSERT INTO `student_academic` (`ano`, `roll_no_fk`, `ssc`, `hsc`, `s1`, `s2`, `s3`, `s4`, `s5`, `s6`, `s7`, `s8`, `objective`, `extra`, `achievement`, `live_kt`, `dead_kt`) VALUES
+(1, '15CE5003', 86, 86, 9, 9, 9, 9, 9, 9, 9, 9, 'Codering', 'sdajk', 'kjds', 0, 0),
+(3, '15CE5008', 82, 82, 9, 9, 9, 9, 9, 9, 9, 9, 'To learn new things ', 'Cricket', 'runners-up of Algorithm3.0, Paper published on ML', 0, 0),
+(4, '14CE1068', 92.36, 92.36, 7.7, 8.37, 8.18, 7.67, 7.67, 7.67, 7.72, 0, 'To grow knowledge', 'organizer', 'None', 0, 0),
+(5, '14ce1017', 90, 90, 9, 9, 9, 9, 9, 9, 0, 0, 'Be kind', 'badminton', 'oracle certified', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_document`
+--
+
+CREATE TABLE `student_document` (
+  `id` int(11) NOT NULL,
+  `docfile` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_document`
+--
+
+INSERT INTO `student_document` (`id`, `docfile`) VALUES
+(1, 'documents/allDocuments/public/code.txt'),
+(2, 'documents/allDocuments/public/code_4pNyhCe.txt'),
+(3, 'documents/allDocuments/public/BOOTEX.LOG'),
+(4, 'documents/allDocuments/public/65.0.3325.181.manifest');
 
 --
 -- Indexes for dumped tables
@@ -487,6 +609,12 @@ ALTER TABLE `event_student`
   ADD KEY `rollno_fk` (`rollno_fk`);
 
 --
+-- Indexes for table `formregister`
+--
+ALTER TABLE `formregister`
+  ADD PRIMARY KEY (`fno`);
+
+--
 -- Indexes for table `notice`
 --
 ALTER TABLE `notice`
@@ -513,6 +641,12 @@ ALTER TABLE `student_academic`
   ADD KEY `roll_no_fk` (`roll_no_fk`);
 
 --
+-- Indexes for table `student_document`
+--
+ALTER TABLE `student_document`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -532,7 +666,7 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
@@ -556,13 +690,13 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `committee`
 --
 ALTER TABLE `committee`
-  MODIFY `cmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
@@ -574,19 +708,19 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `event_student`
@@ -595,22 +729,34 @@ ALTER TABLE `event_student`
   MODIFY `esid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `formregister`
+--
+ALTER TABLE `formregister`
+  MODIFY `fno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `offer_letter`
 --
 ALTER TABLE `offer_letter`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `student_academic`
 --
 ALTER TABLE `student_academic`
-  MODIFY `ano` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ano` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `student_document`
+--
+ALTER TABLE `student_document`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
