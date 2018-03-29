@@ -8,7 +8,7 @@ urlpatterns = [
     path(r'', views.check, name='login'),
     path(r'index/', views.check, name='loginProc'),
 
-    path(r'navStudent/', views.getNavigationStudent, name='navStudent'),
+    path(r'navStudent/', views.getNavigationStudent, name='navStudent'),   #getNavigationStudent
     path(r'navCommittee/', views.getNavigationCommittee, name='navCommittee'),
     path(r'navTPC/', views.getNavigationTPC, name='navTPC'),
     path(r'navAdmin/', views.getNavigationAdmin, name='navAdmin'),

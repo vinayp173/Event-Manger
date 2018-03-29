@@ -5,6 +5,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path(r'', views.Desk, name='deskS'),
     path(r'genR/', views.genR, name='genR'),
     path(r'deskS/', views.Desk, name='deskS'),
     path(r'uploadOffer/', views.uploadLetter, name='uploadOffer'),

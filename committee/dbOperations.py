@@ -12,3 +12,9 @@ class events:
         cursor=self.conn.cursor()
         cursor.execute(query)
         return cursor.fetchall()
+
+    def updatepass(self,entry):
+        query="update committee set pwd='"+entry['newpass']+"' where username= '"+entry['uname']+"' "
+        cursor = self.conn.cursor()
+        cursor.execute(query)
+        return 1

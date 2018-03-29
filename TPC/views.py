@@ -25,15 +25,25 @@ def home(request):
 
 def addcompany(request):
     return render(request, 'myapp/addcompany.html')
-    pass
 
 
 def history(request):
     login = Login()
     companies = login.gethistory()
     return render(request, 'myapp/history.html', {'companies': companies})
-    pass
 
+def changepwd(request):
+    return render(request, 'myapp/changepwd.html')
+
+def newpwd(request):
+    D={}
+    if request.method == 'POST':
+        D['uname']=request.session['uname']
+        D['newpwd'] = request.POST.get('newpwd', False)
+        D['cpwd'] = request.POST.get('cpwd', False)
+        login=Login()
+        if login.updatepwd(D)==1:
+            return render(request, 'myapp/changepwd.html',{'success': 'successfully updated your password!'})
 
 def generatelist(request):
     studlist = []

@@ -1,3 +1,4 @@
+
 from django.db import connections
 
 class Login:
@@ -23,6 +24,11 @@ class Login:
             reply.append(key[0])
         return reply
 
+    def updatepwd(self,entry):
+        query="update committee set pwd='"+entry['newpwd']+"' where username= '"+entry['uname']+"' "
+        cursor = self.conn.cursor()
+        cursor.execute(query)
+        return 1
 
     def getstudlist(self,name):           #Generate the students list for given company name by criteria
         stud=[]

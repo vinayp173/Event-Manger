@@ -9,5 +9,7 @@ urlpatterns = [
     path(r'rescheduleEvent/', views.rescheduleEvent, name='rescheduleEvent'),
     path(r'deleteEvent/', views.deleteEvent, name='deleteEvent'),
     path(r'reschdule/', views.reschdule, name='reschdule'),
-    path(r'deskC/', views.Desk, name='deskC')
+    path(r'deskC/', views.Desk, name='deskC'),
+    path(r'changepass/', views.changepass, name='changepass'),
+    path(r'newpass/', views.newpass, name='newpass')
 ]

@@ -10,6 +10,20 @@ def viewEvents(request):
     event_stud = events()
     return render(request, 'myapp/ViewEvent.html', {'events': event_stud.getCreatedEvents(id)})
 
+def changepass(request):
+    return render(request, 'myapp/changepass.html')
+
+def newpass(request):
+    C={}
+    if request.method == 'POST':
+        C['uname']=request.session['uname']
+        C['newpass'] = request.POST.get('newpass', False)
+        C['cpass'] = request.POST.get('cpass', False)
+        login=events()
+        if login.updatepass(C)==1:
+            return render(request, 'myapp/changepass.html',{'success': 'successfully updated your password!'})
+
+
 
 def addEvent(request):
     conn = connections['default']

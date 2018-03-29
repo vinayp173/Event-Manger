@@ -138,6 +138,13 @@ MEDIA_URL = '/media/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'workforce.pawan@gmail.com'
+#Must generate specific password for your app in [gmail settings][1]
+EMAIL_HOST_PASSWORD = 'workforce@321'
+EMAIL_PORT = 587
+#This did the trick
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 # uncomment this to use email features
 # EMAIL_HOST_USER = USER_EmailID here

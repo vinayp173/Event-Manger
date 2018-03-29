@@ -82,6 +82,7 @@ def check(request):
         l = Login()
         uname = request.POST['uname']
         upass = request.POST['upass']
+        request.session['uname']=uname
         if len(uname)==8 and l.checkStudent(uname, upass, request):
             return returnHomepage(request,uname)
         elif (len(uname)== 9 or len(uname)==5 or len(uname)==3) and l.checkOther(uname,upass,request) :
@@ -91,15 +92,26 @@ def check(request):
     else:
         return render(request, 'myapp/login.html')
 
+def displaynotice():
+    td = {}
+    query = "select title,description from notice"
+    conn = connections['default']
+    cursor = conn.cursor()
+    cursor.execute(query)
+    for t in cursor.fetchall():
+        td[t[0]] = t[1]
+    return td
 
 def returnHomepage(request,uname):
     #student 8 : committee 9 : TPC 5 : admin 3
+    td={}
     print(len(uname))
+    td=displaynotice()
     if len(uname) == 8:
-        return render(request, "myapp/Student.html",{'rollno':uname})
+        return render(request, "myapp/Student.html",{'rollno':uname , 'title':td})
     elif len(uname) == 9:
-        return render(request, "myapp/Committee.html",{'rollno':uname})
+        return render(request, "myapp/Committee.html",{'rollno':uname, 'title':td})
     elif len(uname) == 5:
-        return render(request, "myapp/TPC.html",{'rollno':uname})
+        return render(request, "myapp/TPC.html",{'rollno':uname, 'title':td})
     elif len(uname) == 3:
-        return render(request, "myapp/Admin.html",{'rollno':uname})
+        return render(request, "myapp/Admin.html",{'rollno':uname, 'title':td})

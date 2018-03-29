@@ -9,5 +9,7 @@ urlpatterns = [
     path(r'home/', views.home, name='home'),
     path(r'generatelist/', views.generatelist, name='generatelist'),
     path(r'registercompany/', views.registercompany, name='registercompany'),
+    path(r'changepwd/', views.changepwd, name='changepwd'),
+    path(r'newpwd/', views.newpwd, name='newpwd'),
 
 ]
